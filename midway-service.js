@@ -1,17 +1,15 @@
-import { get } from 'axios';
-import { authCredentials } from './auth-service';
+import { get } from "axios";
+import { authCredentials } from "./auth-service";
 
-const API_HOST = "https://fake-api.com" 
+const API_HOST = "https://fake-api.com";
 
-const overdraftDetalhes = async (username) => {
-  console.log(username)
+const overdraftDetails = async username => {
+  const headerInfo = { correlationId: "458639" };
 
-  let headerInfo = { 'correlationId': '458639' }
-  
-  return await get(`${API_HOST}/users/` + username, {
-      ...authCredentials(),
-      ...headerInfo
-    })
-}
+  return get(`${API_HOST}/users/${username}`, {
+    ...authCredentials(),
+    ...headerInfo
+  });
+};
 
-export { overdraftDetalhes };
+export default { overdraftDetails };
